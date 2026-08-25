@@ -3,306 +3,1038 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#2C1810" />
-  <title>MAARTE Pre-Order Form</title>
+  <meta name="theme-color" content="#302A27" />
+
+  <title>VELORA | Pre-Order Workflow Demo</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
   <header class="hero">
     <div class="brand-mark">
-      <div class="logo-text">MAARTE</div>
+
+      <div class="logo-text">
+        VELORA
+      </div>
+
       <div class="pink-rule"></div>
-      <div class="preorder-kicker">PRE-ORDER</div>
+
+      <div class="preorder-kicker">
+        PRE-ORDER WORKFLOW
+      </div>
+
     </div>
   </header>
 
+
   <main class="page-shell">
+
+    <!-- =====================================================
+         PORTFOLIO DEMO INTRO
+    ====================================================== -->
+
     <section class="intro card">
-      <p class="eyebrow">PLACE YOUR <span>ORDER</span></p>
-      <h1>MAARTE PRE-ORDER FORM</h1>
-      <p>Complete the form below to reserve your MAARTE items. Please review your information, delivery details, order summary, and payment details carefully before submitting.</p>
+
+      <div class="demo-badge">
+        PORTFOLIO DEMONSTRATION
+      </div>
+
+      <p class="eyebrow">
+        PLACE YOUR
+        <span>ORDER</span>
+      </p>
+
+      <h1>
+        VELORA PRE-ORDER FORM
+      </h1>
+
+      <p>
+        Explore a working pre-order workflow designed to organize
+        customer information, product selection, delivery details,
+        payments, automatic calculations, and order records in one
+        streamlined process.
+      </p>
+
+      <div class="demo-notice">
+        <strong>Demo Project</strong>
+
+        <p>
+          This is an interactive portfolio demonstration.
+          Products, branding and payment information shown here are
+          fictional. Test submissions are stored only in a demonstration
+          order tracker and no real payment is processed.
+        </p>
+      </div>
+
     </section>
 
+
     <form id="preorderForm" novalidate>
-      <section class="section card">
-        <div class="section-heading">
-          <span class="section-number">01</span>
-          <h2>YOUR DETAILS</h2>
-        </div>
 
-        <div class="grid two">
-          <label><span>First Name *</span><input id="firstName" name="firstName" type="text" placeholder="Juana" maxlength="50" required></label>
-          <label><span>Surname *</span><input id="surname" name="surname" type="text" placeholder="dela Cruz" maxlength="50" required></label>
-        </div>
-
-        <div class="grid two">
-          <label><span>Instagram Username *</span><input id="instagram" name="instagram" type="text" placeholder="@username" required></label>
-          <label><span>Mobile Number *</span><input id="mobile" name="mobile" type="tel" inputmode="numeric" placeholder="0917 123 4567" required></label>
-        </div>
-
-        <label><span>Email Address *</span><input id="email" name="email" type="email" placeholder="you@email.com" required></label>
-      </section>
+      <!-- ===================================================
+           01 CUSTOMER DETAILS
+      ==================================================== -->
 
       <section class="section card">
+
         <div class="section-heading">
-          <span class="section-number">02</span>
-          <h2>DELIVERY ADDRESS</h2>
+
+          <span class="section-number">
+            01
+          </span>
+
+          <h2>
+            YOUR DETAILS
+          </h2>
+
         </div>
 
+
         <div class="grid two">
-          <label><span>House No. / Unit *</span><input id="house" name="house" type="text" placeholder="12B" required></label>
-          <label><span>Street / Subdivision *</span><input id="street" name="street" type="text" placeholder="Mabini Street" required></label>
+
+          <label>
+            <span>First Name *</span>
+
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              placeholder="Juana"
+              maxlength="50"
+              required
+            >
+          </label>
+
+
+          <label>
+            <span>Surname *</span>
+
+            <input
+              id="surname"
+              name="surname"
+              type="text"
+              placeholder="dela Cruz"
+              maxlength="50"
+              required
+            >
+          </label>
+
         </div>
+
+
+        <div class="grid two">
+
+          <label>
+            <span>Instagram Username *</span>
+
+            <input
+              id="instagram"
+              name="instagram"
+              type="text"
+              placeholder="@username"
+              required
+            >
+          </label>
+
+
+          <label>
+            <span>Mobile Number *</span>
+
+            <input
+              id="mobile"
+              name="mobile"
+              type="tel"
+              inputmode="numeric"
+              placeholder="0917 123 4567"
+              required
+            >
+          </label>
+
+        </div>
+
 
         <label>
-          <span>Region *</span>
-          <select id="region" name="region" required>
-            <option value="">Loading Philippine regions...</option>
-          </select>
+          <span>Email Address *</span>
+
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="you@email.com"
+            required
+          >
         </label>
 
-        <div class="grid two">
-          <label>
-            <span>Province *</span>
-            <select id="province" name="province" required disabled>
-              <option value="">Select a region first</option>
-            </select>
-          </label>
-          <label>
-            <span>City / Municipality *</span>
-            <select id="city" name="city" required disabled>
-              <option value="">Select a province first</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="grid two">
-          <label>
-            <span>Barangay *</span>
-            <select id="barangay" name="barangay" required disabled>
-              <option value="">Select a city / municipality first</option>
-            </select>
-          </label>
-          <label><span>ZIP Code *</span><input id="zip" name="zip" type="text" inputmode="numeric" maxlength="4" pattern="\d{4}" placeholder="1600" required></label>
-        </div>
-
-        <p class="helper-note">The address fields use cascading Philippine location data: Region → Province → City/Municipality → Barangay.</p>
       </section>
 
+
+      <!-- ===================================================
+           02 DELIVERY ADDRESS
+      ==================================================== -->
+
       <section class="section card">
+
         <div class="section-heading">
-          <span class="section-number">03</span>
-          <h2>WHAT WOULD YOU LIKE?</h2>
+
+          <span class="section-number">
+            02
+          </span>
+
+          <h2>
+            DELIVERY ADDRESS
+          </h2>
+
         </div>
+
+
+        <div class="grid two">
+
+          <label>
+            <span>House No. / Unit *</span>
+
+            <input
+              id="house"
+              name="house"
+              type="text"
+              placeholder="12B"
+              required
+            >
+          </label>
+
+
+          <label>
+            <span>Street / Subdivision *</span>
+
+            <input
+              id="street"
+              name="street"
+              type="text"
+              placeholder="Mabini Street"
+              required
+            >
+          </label>
+
+        </div>
+
+
+        <label>
+
+          <span>Region *</span>
+
+          <select
+            id="region"
+            name="region"
+            required
+          >
+
+            <option value="">
+              Loading Philippine regions...
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <div class="grid two">
+
+          <label>
+
+            <span>Province *</span>
+
+            <select
+              id="province"
+              name="province"
+              required
+              disabled
+            >
+
+              <option value="">
+                Select a region first
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+
+            <span>City / Municipality *</span>
+
+            <select
+              id="city"
+              name="city"
+              required
+              disabled
+            >
+
+              <option value="">
+                Select a province first
+              </option>
+
+            </select>
+
+          </label>
+
+        </div>
+
+
+        <div class="grid two">
+
+          <label>
+
+            <span>Barangay *</span>
+
+            <select
+              id="barangay"
+              name="barangay"
+              required
+              disabled
+            >
+
+              <option value="">
+                Select a city / municipality first
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+
+            <span>ZIP Code *</span>
+
+            <input
+              id="zip"
+              name="zip"
+              type="text"
+              inputmode="numeric"
+              maxlength="4"
+              pattern="\d{4}"
+              placeholder="1600"
+              required
+            >
+
+          </label>
+
+        </div>
+
+
+        <p class="helper-note">
+          Philippine address fields are connected using cascading
+          location data: Region → Province → City/Municipality → Barangay.
+        </p>
+
+      </section>
+
+
+      <!-- ===================================================
+           03 PRODUCTS
+      ==================================================== -->
+
+      <section class="section card">
+
+        <div class="section-heading">
+
+          <span class="section-number">
+            03
+          </span>
+
+          <h2>
+            SELECT YOUR ITEMS
+          </h2>
+
+        </div>
+
 
         <div class="promo-mechanics">
-          <strong>PRE-ORDER PROMO MECHANICS</strong>
-          <p><b>₱99 OFF</b> for every matching <b>1 MAARTE Tote Bag + 1 MAARTE Pins</b> pair in the same order.</p>
-          <p><b>Buy 10 MAARTE Caps and get 1 cap free.</b> The free-cap value is deducted automatically.</p>
-          <p>All applicable discounts are calculated automatically in your order summary.</p>
+
+          <strong>
+            DEMO PROMOTION LOGIC
+          </strong>
+
+          <p>
+            <b>₱99 OFF</b> for every matching
+            <b>1 Everyday Tote + 1 Pin Set</b>
+            pair in the same order.
+          </p>
+
+          <p>
+            <b>Buy 10 Classic Caps and get the value of 1 cap free.</b>
+          </p>
+
+          <p>
+            Applicable discounts are calculated automatically
+            in the order summary.
+          </p>
+
         </div>
+
 
         <div class="products">
-          <article class="product-card">
-            <div class="product-image"><img src="assets/tote.png" alt="MAARTE Tote Bag"></div>
-            <div class="product-copy">
-              <div class="product-topline"><h3>MAARTE Tote Bag</h3><div class="price">₱1,599</div></div>
-              <p class="promo">Pair with MAARTE Pins and save ₱99 per matching pair.</p>
-              <div class="qty-row">
-                <span>Quantity</span>
-                <div class="stepper">
-                  <button type="button" class="qty-btn" data-action="minus" data-target="toteQty" aria-label="Decrease tote quantity">−</button>
-                  <input id="toteQty" type="number" min="0" step="1" value="0" aria-label="Tote quantity">
-                  <button type="button" class="qty-btn" data-action="plus" data-target="toteQty" aria-label="Increase tote quantity">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
+
+          <!-- TOTE -->
 
           <article class="product-card">
-            <div class="product-image"><img src="assets/pins.png" alt="MAARTE Pins"></div>
-            <div class="product-copy">
-              <div class="product-topline"><h3>MAARTE Pins</h3><div class="price">₱499</div></div>
-              <p class="promo">Pair with a MAARTE Tote Bag and save ₱99 per matching pair.</p>
-              <div class="qty-row">
-                <span>Quantity</span>
-                <div class="stepper">
-                  <button type="button" class="qty-btn" data-action="minus" data-target="pinsQty" aria-label="Decrease pins quantity">−</button>
-                  <input id="pinsQty" type="number" min="0" step="1" value="0" aria-label="Pins quantity">
-                  <button type="button" class="qty-btn" data-action="plus" data-target="pinsQty" aria-label="Increase pins quantity">+</button>
-                </div>
-              </div>
+
+            <div class="product-image">
+
+              <img
+                src="assets/tote.png"
+                alt="VELORA Everyday Tote"
+              >
+
             </div>
+
+
+            <div class="product-copy">
+
+              <div class="product-topline">
+
+                <h3>
+                  Everyday Tote
+                </h3>
+
+                <div class="price">
+                  ₱1,599
+                </div>
+
+              </div>
+
+
+              <p class="promo">
+                Pair with a Pin Set and save ₱99 per matching pair.
+              </p>
+
+
+              <div class="qty-row">
+
+                <span>
+                  Quantity
+                </span>
+
+
+                <div class="stepper">
+
+                  <button
+                    type="button"
+                    class="qty-btn"
+                    data-action="minus"
+                    data-target="toteQty"
+                    aria-label="Decrease tote quantity"
+                  >
+                    −
+                  </button>
+
+
+                  <input
+                    id="toteQty"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value="0"
+                    aria-label="Tote quantity"
+                  >
+
+
+                  <button
+                    type="button"
+                    class="qty-btn"
+                    data-action="plus"
+                    data-target="toteQty"
+                    aria-label="Increase tote quantity"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
           </article>
 
+
+          <!-- PINS -->
+
           <article class="product-card">
-            <div class="product-image cap-image"><img src="assets/cap.png" alt="MAARTE Cap"></div>
-            <div class="product-copy">
-              <div class="product-topline"><h3>MAARTE Cap</h3><div class="price">₱799</div></div>
-              <p class="promo">Buy 10 caps and get 1 cap free.</p>
-              <div class="qty-row">
-                <span>Quantity</span>
-                <div class="stepper">
-                  <button type="button" class="qty-btn" data-action="minus" data-target="capsQty" aria-label="Decrease cap quantity">−</button>
-                  <input id="capsQty" type="number" min="0" step="1" value="0" aria-label="Cap quantity">
-                  <button type="button" class="qty-btn" data-action="plus" data-target="capsQty" aria-label="Increase cap quantity">+</button>
-                </div>
-              </div>
+
+            <div class="product-image">
+
+              <img
+                src="assets/pins.png"
+                alt="VELORA Pin Set"
+              >
+
             </div>
+
+
+            <div class="product-copy">
+
+              <div class="product-topline">
+
+                <h3>
+                  Pin Set
+                </h3>
+
+                <div class="price">
+                  ₱499
+                </div>
+
+              </div>
+
+
+              <p class="promo">
+                Pair with an Everyday Tote and save ₱99 per matching pair.
+              </p>
+
+
+              <div class="qty-row">
+
+                <span>
+                  Quantity
+                </span>
+
+
+                <div class="stepper">
+
+                  <button
+                    type="button"
+                    class="qty-btn"
+                    data-action="minus"
+                    data-target="pinsQty"
+                    aria-label="Decrease pin set quantity"
+                  >
+                    −
+                  </button>
+
+
+                  <input
+                    id="pinsQty"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value="0"
+                    aria-label="Pin set quantity"
+                  >
+
+
+                  <button
+                    type="button"
+                    class="qty-btn"
+                    data-action="plus"
+                    data-target="pinsQty"
+                    aria-label="Increase pin set quantity"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
           </article>
+
+
+          <!-- CAP -->
+
+          <article class="product-card">
+
+            <div class="product-image cap-image">
+
+              <img
+                src="assets/cap.png"
+                alt="VELORA Classic Cap"
+              >
+
+            </div>
+
+
+            <div class="product-copy">
+
+              <div class="product-topline">
+
+                <h3>
+                  Classic Cap
+                </h3>
+
+                <div class="price">
+                  ₱799
+                </div>
+
+              </div>
+
+
+              <p class="promo">
+                Buy 10 caps and receive the value of 1 cap free.
+              </p>
+
+
+              <div class="qty-row">
+
+                <span>
+                  Quantity
+                </span>
+
+
+                <div class="stepper">
+
+                  <button
+                    type="button"
+                    class="qty-btn"
+                    data-action="minus"
+                    data-target="capsQty"
+                    aria-label="Decrease cap quantity"
+                  >
+                    −
+                  </button>
+
+
+                  <input
+                    id="capsQty"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value="0"
+                    aria-label="Cap quantity"
+                  >
+
+
+                  <button
+                    type="button"
+                    class="qty-btn"
+                    data-action="plus"
+                    data-target="capsQty"
+                    aria-label="Increase cap quantity"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
         </div>
+
       </section>
 
+
+      <!-- ===================================================
+           04 DELIVERY
+      ==================================================== -->
+
       <section class="section card">
+
         <div class="section-heading">
-          <span class="section-number">04</span>
-          <h2>DELIVERY METHOD</h2>
+
+          <span class="section-number">
+            04
+          </span>
+
+          <h2>
+            DELIVERY METHOD
+          </h2>
+
         </div>
+
 
         <div class="delivery-options">
-          <label class="radio-card">
-            <input type="radio" name="deliveryMethod" value="Courier Delivery" required>
-            <span class="radio-dot"></span>
-            <span>
-              <strong>Courier Delivery</strong>
-              <small>Shipping will be calculated automatically from your address and order size.</small>
-            </span>
-          </label>
 
           <label class="radio-card">
-            <input type="radio" name="deliveryMethod" value="Pick-up in Kamias, QC" required>
+
+            <input
+              type="radio"
+              name="deliveryMethod"
+              value="Courier Delivery"
+              required
+            >
+
             <span class="radio-dot"></span>
+
             <span>
-              <strong>Pick-up in Kamias, QC</strong>
-              <small>No courier shipping charge.</small>
+
+              <strong>
+                Courier Delivery
+              </strong>
+
+              <small>
+                Demo shipping is calculated automatically based on
+                location and estimated order size.
+              </small>
+
             </span>
+
           </label>
+
+
+          <label class="radio-card">
+
+            <input
+              type="radio"
+              name="deliveryMethod"
+              value="Studio Pick-up"
+              required
+            >
+
+            <span class="radio-dot"></span>
+
+            <span>
+
+              <strong>
+                Studio Pick-up
+              </strong>
+
+              <small>
+                No shipping charge will be added.
+              </small>
+
+            </span>
+
+          </label>
+
         </div>
+
       </section>
 
+
+      <!-- ===================================================
+           05 PAYMENT
+      ==================================================== -->
+
       <section class="section card">
+
         <div class="section-heading">
-          <span class="section-number">05</span>
-          <h2>PAYMENT METHOD</h2>
+
+          <span class="section-number">
+            05
+          </span>
+
+          <h2>
+            PAYMENT METHOD
+          </h2>
+
         </div>
+
+
+        <div class="payment-demo-note">
+
+          <strong>
+            DEMO PAYMENT
+          </strong>
+
+          <p>
+            No real payment is processed. You may select a payment
+            method and enter sample information to test the workflow.
+          </p>
+
+        </div>
+
 
         <div class="delivery-options">
+
           <label class="radio-card">
-            <input type="radio" name="paymentMethod" value="GCash" required>
+
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="GCash"
+              required
+            >
+
             <span class="radio-dot"></span>
-            <span><strong>GCash</strong><small>Scan the payment QR code shown below.</small></span>
+
+            <span>
+
+              <strong>
+                GCash
+              </strong>
+
+              <small>
+                Demonstration payment option.
+              </small>
+
+            </span>
+
           </label>
+
+
           <label class="radio-card">
-            <input type="radio" name="paymentMethod" value="Bank Transfer" required>
+
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="Bank Transfer"
+              required
+            >
+
             <span class="radio-dot"></span>
-            <span><strong>Bank Transfer</strong><small>Use the BPI QR code shown below.</small></span>
+
+            <span>
+
+              <strong>
+                Bank Transfer
+              </strong>
+
+              <small>
+                Demonstration bank transfer option.
+              </small>
+
+            </span>
+
           </label>
+
+
           <label class="radio-card">
-            <input type="radio" name="paymentMethod" value="PayPal" required>
+
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="PayPal"
+              required
+            >
+
             <span class="radio-dot"></span>
-            <span><strong>PayPal</strong><small>Select this if paying through MAARTE's PayPal account.</small></span>
+
+            <span>
+
+              <strong>
+                PayPal
+              </strong>
+
+              <small>
+                Demonstration international payment option.
+              </small>
+
+            </span>
+
           </label>
+
         </div>
 
-        <div id="paymentDetails" class="payment-details hidden">
-          <div id="gcashDetails" class="qr-panel hidden">
-            <h3>GCash</h3>
-            <img src="assets/gcash-qr.png" alt="MAARTE GCash payment QR code">
+
+        <div
+          id="paymentDetails"
+          class="payment-details hidden"
+        >
+
+          <div
+            id="gcashDetails"
+            class="demo-payment-panel hidden"
+          >
+
+            <h3>
+              GCash — Demo
+            </h3>
+
+            <p>
+              In a live implementation, the business's approved
+              payment instructions or QR code can appear here.
+            </p>
+
           </div>
 
-          <div id="bankDetails" class="qr-panel hidden">
-            <h3>BPI Bank Transfer</h3>
-            <img src="assets/bpi-qr.png" alt="MAARTE BPI payment QR code">
+
+          <div
+            id="bankDetails"
+            class="demo-payment-panel hidden"
+          >
+
+            <h3>
+              Bank Transfer — Demo
+            </h3>
+
+            <p>
+              In a live implementation, approved bank transfer
+              instructions can be displayed here.
+            </p>
+
           </div>
 
-          <div id="paypalDetails" class="paypal-panel hidden">
-            <h3>PayPal</h3>
-            <p>Use the official MAARTE PayPal payment details provided by the brand. No PayPal QR code was supplied with this form.</p>
+
+          <div
+            id="paypalDetails"
+            class="demo-payment-panel hidden"
+          >
+
+            <h3>
+              PayPal — Demo
+            </h3>
+
+            <p>
+              In a live implementation, the business's approved
+              PayPal payment instructions can appear here.
+            </p>
+
           </div>
+
 
           <div class="grid two payment-inputs">
-            <label><span>Payment Reference Number *</span><input id="paymentReference" name="paymentReference" type="text" placeholder="Transaction / reference number" required></label>
-            <label><span>Upload Payment Screenshot *</span><input id="paymentScreenshot" name="paymentScreenshot" type="file" accept="image/*" required></label>
+
+            <label>
+
+              <span>
+                Demo Reference Number *
+              </span>
+
+              <input
+                id="paymentReference"
+                name="paymentReference"
+                type="text"
+                placeholder="Example: DEMO-12345"
+                required
+              >
+
+            </label>
+
+
+            <label>
+
+              <span>
+                Upload Sample Screenshot *
+              </span>
+
+              <input
+                id="paymentScreenshot"
+                name="paymentScreenshot"
+                type="file"
+                accept="image/*"
+                required
+              >
+
+            </label>
+
           </div>
 
-          <div id="screenshotPreview" class="screenshot-preview hidden"></div>
+
+          <p class="helper-note">
+            For demonstration purposes only. Do not upload real
+            payment receipts or sensitive financial information.
+          </p>
+
+
+          <div
+            id="screenshotPreview"
+            class="screenshot-preview hidden"
+          ></div>
+
         </div>
+
       </section>
+
+
+      <!-- ===================================================
+           06 SUMMARY
+      ==================================================== -->
 
       <section class="section card summary-card">
+
         <div class="section-heading">
-          <span class="section-number">06</span>
-          <h2>ORDER SUMMARY</h2>
+
+          <span class="section-number">
+            06
+          </span>
+
+          <h2>
+            ORDER SUMMARY
+          </h2>
+
         </div>
 
-        <div id="orderSummary" class="order-summary"></div>
+
+        <div
+          id="orderSummary"
+          class="order-summary"
+        ></div>
+
 
         <div class="summary-total">
-          <span>YOUR TOTAL</span>
-          <strong id="summaryTotal">₱0</strong>
+
+          <span>
+            YOUR TOTAL
+          </span>
+
+          <strong id="summaryTotal">
+            ₱0
+          </strong>
+
         </div>
+
       </section>
 
-     <section class="submit-wrap">
-  <button id="submitBtn" type="submit">SUBMIT PRE-ORDER</button>
-  <p id="formStatus" aria-live="polite"></p>
 
-  <div id="instagramSuccess" class="instagram-success hidden">
-    <h3>Pre-Order Submitted! 💗</h3>
+      <!-- ===================================================
+           SUBMIT
+      ==================================================== -->
 
-    <p>
-      Your MAARTE pre-order has been received.
-    </p>
+      <section class="submit-wrap">
 
-    <p>
-      To complete your order confirmation, please continue to Instagram and send us a message.
-    </p>
+        <button
+          id="submitBtn"
+          type="submit"
+        >
+          SUBMIT DEMO ORDER
+        </button>
 
-    <p>
-  Your MAARTE pre-order has been received.
-</p>
 
-<p>
-  One last step: copy your order summary, then open Instagram and send it to MAARTE.
-</p>
+        <p
+          id="formStatus"
+          aria-live="polite"
+        ></p>
 
-<div id="instagramOrderPreview" class="instagram-order-preview hidden">
-  <h3>YOUR ORDER SUMMARY</h3>
-  <pre id="instagramOrderText"></pre>
-</div>
 
-<button
-  type="button"
-  id="copyOrderBtn"
-  class="instagram-dm-btn"
->
-  COPY ORDER SUMMARY
-</button>
+        <div
+          id="instagramSuccess"
+          class="instagram-success hidden"
+        ></div>
 
-<a
-  href="https://ig.me/m/maartebrand"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="instagram-dm-btn"
->
-  OPEN INSTAGRAM DM
-</a>
+      </section>
 
-<p id="copyOrderStatus" class="ig-note">
-  Copy your order summary first, then paste it into the MAARTE Instagram DM.
-</p>
-  </div>
-</section>
     </form>
+
   </main>
 
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
   <footer>
-    <p>Turning stigma into statement.</p>
+
+    <p>
+      Interactive workflow demonstration by Winterlyn Mabalod.
+    </p>
+
+    <small>
+      Portfolio project • Fictional brand • Demo data only
+    </small>
+
   </footer>
 
+
   <script src="script.js"></script>
+
 </body>
 </html>
