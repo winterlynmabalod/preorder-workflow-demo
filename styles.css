@@ -1,0 +1,882 @@
+:root{
+  --cream:#FAF6F0;
+  --white:#FFFDF9;
+  --espresso:#2C1810;
+  --brown:#4A2E22;
+  --pink:#E8A0A8;
+  --pink-deep:#D98996;
+  --pink-light:#F2C4C9;
+  --border:rgba(44,24,16,.16);
+  --shadow:0 14px 40px rgba(44,24,16,.08);
+}
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Barlow",sans-serif;
+  background:var(--cream);
+  color:var(--espresso);
+}
+
+/* =========================================================
+   HERO / HEADER
+========================================================= */
+
+.hero{
+  background:var(--espresso);
+  min-height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border-bottom:4px solid var(--pink);
+}
+
+.logo-text{
+  color:var(--white);
+  font-family:"Cormorant Garamond",serif;
+  font-size:54px;
+  letter-spacing:.16em;
+  line-height:1;
+}
+
+.pink-rule{
+  width:92px;
+  height:3px;
+  background:var(--pink);
+  margin:16px auto 10px;
+}
+
+.preorder-kicker{
+  color:var(--pink-light);
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:700;
+  letter-spacing:.24em;
+  font-size:13px;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page-shell{
+  width:min(760px,calc(100% - 28px));
+  margin:-28px auto 48px;
+}
+
+.card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+  padding:28px;
+  margin-bottom:18px;
+}
+
+.eyebrow{
+  margin:0 0 4px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:700;
+  letter-spacing:.13em;
+  font-size:13px;
+}
+
+.eyebrow span{
+  color:var(--pink-deep);
+  font-family:"Cormorant Garamond",serif;
+  font-style:italic;
+  letter-spacing:0;
+  font-size:18px;
+}
+
+h1{
+  margin:4px 0 8px;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(30px,6vw,44px);
+  line-height:1;
+}
+
+.intro p:last-child{
+  margin:0;
+  color:var(--brown);
+  line-height:1.6;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section{
+  padding:24px;
+  margin:18px 0;
+}
+
+.section-heading{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.section-number{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--espresso);
+  color:var(--pink-light);
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:700;
+  font-size:13px;
+  flex:0 0 auto;
+}
+
+h2{
+  margin:0;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:25px;
+  letter-spacing:.05em;
+}
+
+h3{
+  color:var(--espresso);
+}
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.grid{
+  display:grid;
+  gap:14px;
+}
+
+.grid.two{
+  grid-template-columns:1fr 1fr;
+}
+
+label{
+  display:block;
+  margin-bottom:14px;
+}
+
+label>span:first-child{
+  display:block;
+  font-weight:600;
+  margin-bottom:7px;
+}
+
+input,
+select{
+  width:100%;
+  font:inherit;
+  color:var(--espresso);
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  padding:14px 15px;
+  outline:none;
+  transition:.18s ease;
+}
+
+input:focus,
+select:focus{
+  border-color:var(--pink);
+  box-shadow:0 0 0 4px rgba(232,160,168,.18);
+}
+
+select:disabled{
+  background:#f5f0eb;
+  color:#8b8079;
+}
+
+.helper-note{
+  margin:0;
+  color:var(--brown);
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* =========================================================
+   PROMO MECHANICS
+========================================================= */
+
+.promo-mechanics{
+  background:rgba(242,196,201,.38);
+  border:1px solid var(--pink);
+  border-radius:10px;
+  padding:16px;
+  margin-bottom:18px;
+}
+
+.promo-mechanics>strong{
+  font-family:"Barlow Condensed",sans-serif;
+  letter-spacing:.08em;
+}
+
+.promo-mechanics p{
+  margin:7px 0 0;
+  color:var(--brown);
+  line-height:1.48;
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products{
+  display:grid;
+  gap:16px;
+}
+
+.product-card{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:18px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+  background:var(--white);
+  transition:.18s ease;
+}
+
+.product-card:hover{
+  border-color:rgba(217,137,150,.55);
+  box-shadow:0 10px 26px rgba(44,24,16,.06);
+}
+
+.product-image{
+  aspect-ratio:1/1;
+  border-radius:10px;
+  overflow:hidden;
+  background:var(--cream);
+  display:grid;
+  place-items:center;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.product-image.cap-image{
+  background:#3f1f22;
+}
+
+.product-image.cap-image img{
+  object-fit:cover;
+}
+
+.product-topline{
+  display:flex;
+  gap:12px;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+
+.product-topline h3{
+  margin:0;
+  font-size:20px;
+}
+
+.price{
+  font-weight:700;
+  color:var(--brown);
+  white-space:nowrap;
+}
+
+.promo{
+  background:rgba(242,196,201,.45);
+  border:1px solid var(--pink);
+  border-radius:8px;
+  padding:9px 10px;
+  color:var(--brown);
+  font-size:14px;
+}
+
+.qty-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.stepper{
+  display:grid;
+  grid-template-columns:42px 60px 42px;
+  align-items:center;
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.stepper input{
+  border:0;
+  border-left:1px solid var(--border);
+  border-right:1px solid var(--border);
+  border-radius:0;
+  padding:10px 4px;
+  text-align:center;
+  appearance:textfield;
+}
+
+.stepper input::-webkit-outer-spin-button,
+.stepper input::-webkit-inner-spin-button{
+  appearance:none;
+  margin:0;
+}
+
+.qty-btn{
+  border:0;
+  background:var(--cream);
+  color:var(--espresso);
+  font-size:22px;
+  cursor:pointer;
+  height:42px;
+  transition:.18s ease;
+}
+
+.qty-btn:hover{
+  background:var(--pink-light);
+}
+
+/* =========================================================
+   DELIVERY OPTIONS
+========================================================= */
+
+.delivery-options{
+  display:grid;
+  gap:12px;
+}
+
+.radio-card{
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  cursor:pointer;
+  transition:.18s ease;
+  margin:0;
+}
+
+.radio-card input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+.radio-card:hover{
+  border-color:var(--pink);
+}
+
+.radio-card:has(input:checked){
+  border-color:var(--pink-deep);
+  background:rgba(242,196,201,.45);
+}
+
+.radio-dot{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  border:1.5px solid var(--pink-deep);
+  margin-top:2px;
+  flex:0 0 auto;
+}
+
+.radio-card:has(input:checked) .radio-dot{
+  box-shadow:inset 0 0 0 4px var(--white);
+  background:var(--pink-deep);
+}
+
+.radio-card strong{
+  display:block;
+  margin-bottom:3px;
+}
+
+.radio-card small{
+  display:block;
+  color:var(--brown);
+  line-height:1.4;
+}
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+.hidden{
+  display:none!important;
+}
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+.payment-details{
+  margin-top:20px;
+  border-top:1px solid var(--border);
+  padding-top:20px;
+}
+
+.qr-panel{
+  text-align:center;
+}
+
+.qr-panel h3,
+.paypal-panel h3{
+  font-family:"Cormorant Garamond",serif;
+  font-size:29px;
+  margin:0 0 12px;
+}
+
+.qr-panel img{
+  display:block;
+  width:min(360px,100%);
+  margin:0 auto 18px;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+
+.paypal-panel{
+  background:var(--cream);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:18px;
+  margin-bottom:18px;
+  text-align:center;
+}
+
+.paypal-panel p{
+  margin:0;
+  color:var(--brown);
+  line-height:1.5;
+}
+
+.payment-inputs{
+  margin-top:8px;
+}
+
+/* =========================================================
+   ORDER SUMMARY
+========================================================= */
+
+.order-summary{
+  display:grid;
+  gap:16px;
+}
+
+.summary-group{
+  padding-bottom:14px;
+  border-bottom:1px solid var(--border);
+}
+
+.summary-group:last-child{
+  border-bottom:0;
+}
+
+.summary-group h3{
+  margin:0 0 9px;
+  font-family:"Barlow Condensed",sans-serif;
+  letter-spacing:.06em;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin:6px 0;
+  color:var(--brown);
+}
+
+.summary-row strong{
+  text-align:right;
+  color:var(--espresso);
+}
+
+.summary-row.discount span,
+.summary-row.discount strong{
+  color:var(--pink-deep);
+}
+
+.summary-total{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:2px solid var(--pink);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.summary-total span{
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:700;
+  letter-spacing:.09em;
+}
+
+.summary-total strong{
+  font-family:"Cormorant Garamond",serif;
+  font-style:italic;
+  font-size:38px;
+}
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.submit-wrap{
+  text-align:center;
+  padding:8px 0 22px;
+}
+
+#submitBtn{
+  border:0;
+  border-radius:10px;
+  padding:16px 28px;
+  background:var(--pink);
+  color:var(--espresso);
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.08em;
+  cursor:pointer;
+  min-width:270px;
+  transition:.18s ease;
+}
+
+#submitBtn:hover{
+  background:var(--pink-deep);
+  transform:translateY(-1px);
+}
+
+#submitBtn:disabled{
+  opacity:.72;
+  cursor:default;
+  transform:none;
+}
+
+#formStatus{
+  font-weight:600;
+  color:var(--brown);
+  line-height:1.5;
+}
+
+/* =========================================================
+   INSTAGRAM SUCCESS AREA
+========================================================= */
+
+.instagram-success{
+  max-width:660px;
+  margin:28px auto 0;
+  padding:30px 24px;
+  background:var(--white);
+  border:1.5px solid var(--pink);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+
+.instagram-success-inner{
+  width:100%;
+}
+
+.instagram-success h2{
+  margin:0 0 10px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:31px;
+  letter-spacing:.04em;
+  color:var(--espresso);
+}
+
+.instagram-success h3{
+  margin:0 0 10px;
+  color:var(--espresso);
+}
+
+.instagram-success p{
+  margin:9px 0;
+  color:var(--brown);
+  line-height:1.6;
+}
+
+/* =========================================================
+   INSTAGRAM ORDER MESSAGE PREVIEW
+========================================================= */
+
+.instagram-order-preview{
+  margin:24px 0 20px;
+  padding:20px;
+  background:var(--cream);
+  border:1px solid var(--border);
+  border-radius:12px;
+  text-align:left;
+}
+
+.instagram-order-preview h3{
+  margin:0 0 16px;
+  text-align:center;
+  font-family:"Cormorant Garamond",serif;
+  font-size:28px;
+  letter-spacing:.03em;
+}
+
+#instagramOrderText{
+  margin:0;
+  white-space:pre-wrap;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+  font-family:"Barlow",sans-serif;
+  font-size:14px;
+  line-height:1.65;
+  color:var(--espresso);
+}
+
+/* =========================================================
+   INSTAGRAM BUTTONS
+========================================================= */
+
+.instagram-action-btn,
+.instagram-dm-btn,
+#copyOrderBtn{
+  display:block;
+  width:100%;
+  margin:12px auto 0;
+  padding:15px 20px;
+  border-radius:10px;
+  border:0;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-align:center;
+  cursor:pointer;
+  transition:.18s ease;
+}
+
+/* COPY BUTTON */
+
+#copyOrderBtn{
+  background:var(--pink);
+  color:var(--espresso);
+}
+
+#copyOrderBtn:hover{
+  background:var(--pink-deep);
+  transform:translateY(-1px);
+}
+
+/* INSTAGRAM BUTTON */
+
+.instagram-dm-btn{
+  background:var(--espresso);
+  color:var(--white);
+  text-decoration:none;
+}
+
+.instagram-dm-btn:hover{
+  background:#3D2318;
+  transform:translateY(-1px);
+}
+
+/* =========================================================
+   COPY MESSAGE / NOTE
+========================================================= */
+
+.instagram-copy-status,
+.ig-note{
+  margin-top:14px!important;
+  font-size:13px;
+  color:var(--brown);
+  line-height:1.5;
+}
+
+.instagram-copy-status strong,
+.ig-note strong{
+  color:var(--pink-deep);
+}
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+.invalid{
+  border-color:#b42318!important;
+  box-shadow:0 0 0 4px rgba(180,35,24,.08)!important;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  text-align:center;
+  padding:4px 20px 34px;
+  color:var(--brown);
+}
+
+footer p{
+  font-family:"Cormorant Garamond",serif;
+  font-style:italic;
+  font-size:20px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:620px){
+
+  .hero{
+    min-height:190px;
+  }
+
+  .logo-text{
+    font-size:45px;
+  }
+
+  .page-shell{
+    width:min(100% - 20px,760px);
+    margin-top:-20px;
+  }
+
+  .intro,
+  .section{
+    padding:19px;
+  }
+
+  .grid.two{
+    grid-template-columns:1fr;
+  }
+
+  .product-card{
+    grid-template-columns:1fr;
+  }
+
+  .product-image{
+    max-height:290px;
+  }
+
+  .product-topline{
+    align-items:center;
+  }
+
+  #submitBtn{
+    width:100%;
+  }
+
+  .summary-row{
+    gap:10px;
+    align-items:flex-start;
+  }
+
+  .summary-row strong{
+    max-width:55%;
+  }
+
+  /* SUCCESS CARD */
+
+  .instagram-success{
+    margin-top:20px;
+    padding:22px 16px;
+    border-radius:14px;
+  }
+
+  .instagram-success h2{
+    font-size:27px;
+  }
+
+  .instagram-success p{
+    font-size:14px;
+  }
+
+  /* ORDER PREVIEW */
+
+  .instagram-order-preview{
+    padding:16px 14px;
+    margin:20px 0 16px;
+  }
+
+  .instagram-order-preview h3{
+    font-size:24px;
+  }
+
+  #instagramOrderText{
+    font-size:13px;
+    line-height:1.6;
+  }
+
+  /* BUTTONS */
+
+  .instagram-action-btn,
+  .instagram-dm-btn,
+  #copyOrderBtn{
+    font-size:17px;
+    padding:14px 16px;
+  }
+
+  .instagram-copy-status,
+  .ig-note{
+    font-size:12px;
+  }
+}
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media(max-width:390px){
+
+  .logo-text{
+    font-size:39px;
+  }
+
+  .intro,
+  .section{
+    padding:17px;
+  }
+
+  h1{
+    font-size:31px;
+  }
+
+  .product-topline{
+    gap:8px;
+  }
+
+  .price{
+    font-size:14px;
+  }
+
+  .stepper{
+    grid-template-columns:38px 54px 38px;
+  }
+
+  .instagram-success{
+    padding:20px 13px;
+  }
+
+  #instagramOrderText{
+    font-size:12.5px;
+  }
+}
