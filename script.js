@@ -3,10 +3,6 @@ const PSGC_API = "https://psgc.cloud/api/v2";
 const SUBMIT_ENDPOINT =
   "https://script.google.com/macros/s/AKfycbxvwfcOXo4D55MclN8SCqc-hQi0ogOik9hIWliDOByEbBeYsrfiChd8nDVHDNH3NIqbHw/exec";
 
-// MAARTE Instagram
-const MAARTE_INSTAGRAM = "maartebrand";
-const INSTAGRAM_DM_URL = `https://ig.me/m/${MAARTE_INSTAGRAM}`;
-
 const PRICES = {
   tote: 1599,
   pins: 499,
@@ -69,9 +65,9 @@ function value(id) {
 }
 
 function selected(name) {
-  return (
-    document.querySelector(`input[name="${name}"]:checked`)?.value || ""
-  );
+  return document.querySelector(
+    `input[name="${name}"]:checked`
+  )?.value || "";
 }
 
 function selectedText(el) {
@@ -101,7 +97,9 @@ async function getJSON(url) {
 
   const json = await response.json();
 
-  return Array.isArray(json) ? json : json.data || [];
+  return Array.isArray(json)
+    ? json
+    : json.data || [];
 }
 
 function makeOptions(rows, firstLabel) {
@@ -110,10 +108,9 @@ function makeOptions(rows, firstLabel) {
     rows
       .map(
         row =>
-          `<option value="${String(row.code || row.name).replaceAll(
-            '"',
-            "&quot;"
-          )}">${row.name}</option>`
+          `<option value="${String(
+            row.code || row.name
+          ).replaceAll('"', "&quot;")}">${row.name}</option>`
       )
       .join("")
   );
@@ -121,9 +118,11 @@ function makeOptions(rows, firstLabel) {
 
 async function loadRegions() {
   try {
-    const rows = await getJSON(`${PSGC_API}/regions`);
+    const rows =
+      await getJSON(`${PSGC_API}/regions`);
 
-    region.innerHTML = makeOptions(rows, "Select Region");
+    region.innerHTML =
+      makeOptions(rows, "Select Region");
   } catch (error) {
     region.innerHTML =
       `<option value="">Address service unavailable</option>`;
@@ -153,19 +152,24 @@ region?.addEventListener("change", async () => {
   }
 
   try {
-    [regionProvinces, regionCities] = await Promise.all([
-      getJSON(
-        `${PSGC_API}/regions/${encodeURIComponent(region.value)}/provinces`
-      ),
-      getJSON(
-        `${PSGC_API}/regions/${encodeURIComponent(
-          region.value
-        )}/cities-municipalities`
-      )
-    ]);
+    [regionProvinces, regionCities] =
+      await Promise.all([
+        getJSON(
+          `${PSGC_API}/regions/${encodeURIComponent(
+            region.value
+          )}/provinces`
+        ),
+        getJSON(
+          `${PSGC_API}/regions/${encodeURIComponent(
+            region.value
+          )}/cities-municipalities`
+        )
+      ]);
 
     const isNCR =
-      /NATIONAL CAPITAL REGION|NCR/i.test(selectedText(region));
+      /NATIONAL CAPITAL REGION|NCR/i.test(
+        selectedText(region)
+      );
 
     const specialLabel = isNCR
       ? "Metro Manila / NCR Cities"
@@ -216,7 +220,10 @@ province?.addEventListener("change", async () => {
           );
 
     city.innerHTML =
-      makeOptions(rows, "Select City / Municipality");
+      makeOptions(
+        rows,
+        "Select City / Municipality"
+      );
 
     city.disabled = false;
   } catch (error) {
@@ -239,14 +246,18 @@ city?.addEventListener("change", async () => {
   }
 
   try {
-    const rows = await getJSON(
-      `${PSGC_API}/cities-municipalities/${encodeURIComponent(
-        city.value
-      )}/barangays`
-    );
+    const rows =
+      await getJSON(
+        `${PSGC_API}/cities-municipalities/${encodeURIComponent(
+          city.value
+        )}/barangays`
+      );
 
     barangay.innerHTML =
-      makeOptions(rows, "Select Barangay");
+      makeOptions(
+        rows,
+        "Select Barangay"
+      );
 
     barangay.disabled = false;
   } catch (error) {
@@ -272,21 +283,29 @@ function calculateOrder() {
   const pins = intVal(pinsQty);
   const caps = intVal(capsQty);
 
-  const toteSubtotal = tote * PRICES.tote;
-  const pinsSubtotal = pins * PRICES.pins;
-  const capSubtotal = caps * PRICES.caps;
+  const toteSubtotal =
+    tote * PRICES.tote;
+
+  const pinsSubtotal =
+    pins * PRICES.pins;
+
+  const capSubtotal =
+    caps * PRICES.caps;
 
   const subtotal =
     toteSubtotal +
     pinsSubtotal +
     capSubtotal;
 
-  // ₱99 OFF every matching Tote + Pins pair
-  const matchingPairs = Math.min(tote, pins);
-  const totePinsDiscount = matchingPairs * 99;
+  const matchingPairs =
+    Math.min(tote, pins);
 
-  // Buy 10 caps = 1 free cap
-  const freeCaps = Math.floor(caps / 10);
+  const totePinsDiscount =
+    matchingPairs * 99;
+
+  const freeCaps =
+    Math.floor(caps / 10);
+
   const capPromoDiscount =
     freeCaps * PRICES.caps;
 
@@ -311,9 +330,11 @@ function calculateOrder() {
   const shipping =
     deliveryMethod === "Courier Delivery"
       ? boxes *
-        (isMetroManila()
-          ? SHIPPING.metro
-          : SHIPPING.provincial)
+        (
+          isMetroManila()
+            ? SHIPPING.metro
+            : SHIPPING.provincial
+        )
       : 0;
 
   const total =
@@ -414,7 +435,8 @@ function getAddress() {
 ========================================================= */
 
 function updateSummary() {
-  const c = calculateOrder();
+  const c =
+    calculateOrder();
 
   const paymentMethod =
     selected("paymentMethod");
@@ -428,7 +450,10 @@ function updateSummary() {
 
   let html = `
     <div class="summary-group">
-      <h3>CUSTOMER DETAILS</h3>
+
+      <h3>
+        CUSTOMER DETAILS
+      </h3>
 
       <div class="summary-row">
         <span>Name</span>
@@ -449,10 +474,15 @@ function updateSummary() {
         <span>Email</span>
         <strong>${value("email") || "—"}</strong>
       </div>
+
     </div>
 
+
     <div class="summary-group">
-      <h3>DELIVERY DETAILS</h3>
+
+      <h3>
+        DELIVERY DETAILS
+      </h3>
 
       <div class="summary-row">
         <span>Address</span>
@@ -463,17 +493,26 @@ function updateSummary() {
         <span>Delivery Method</span>
         <strong>${c.deliveryMethod || "—"}</strong>
       </div>
+
     </div>
 
+
     <div class="summary-group">
-      <h3>ORDER</h3>
+
+      <h3>
+        ORDER
+      </h3>
   `;
 
   if (c.tote) {
     html += `
       <div class="summary-row">
-        <span>MAARTE Tote Bag × ${c.tote}</span>
-        <strong>${fmt(c.toteSubtotal)}</strong>
+        <span>
+          Everyday Tote × ${c.tote}
+        </span>
+        <strong>
+          ${fmt(c.toteSubtotal)}
+        </strong>
       </div>
     `;
   }
@@ -481,8 +520,12 @@ function updateSummary() {
   if (c.pins) {
     html += `
       <div class="summary-row">
-        <span>MAARTE Pins × ${c.pins}</span>
-        <strong>${fmt(c.pinsSubtotal)}</strong>
+        <span>
+          Pin Set × ${c.pins}
+        </span>
+        <strong>
+          ${fmt(c.pinsSubtotal)}
+        </strong>
       </div>
     `;
   }
@@ -490,16 +533,26 @@ function updateSummary() {
   if (c.caps) {
     html += `
       <div class="summary-row">
-        <span>MAARTE Cap × ${c.caps}</span>
-        <strong>${fmt(c.capSubtotal)}</strong>
+        <span>
+          Classic Cap × ${c.caps}
+        </span>
+        <strong>
+          ${fmt(c.capSubtotal)}
+        </strong>
       </div>
     `;
   }
 
-  if (!c.tote && !c.pins && !c.caps) {
+  if (
+    !c.tote &&
+    !c.pins &&
+    !c.caps
+  ) {
     html += `
       <div class="summary-row">
-        <span>No products selected yet.</span>
+        <span>
+          No products selected yet.
+        </span>
         <strong>—</strong>
       </div>
     `;
@@ -515,14 +568,17 @@ function updateSummary() {
   if (c.totePinsDiscount) {
     html += `
       <div class="summary-row discount">
+
         <span>
-          Tote + Pins Promo
-          (${c.matchingPairs} matching pair${c.matchingPairs > 1 ? "s" : ""})
+          Tote + Pin Set Promo
+          (${c.matchingPairs}
+          matching pair${c.matchingPairs > 1 ? "s" : ""})
         </span>
 
         <strong>
           −${fmt(c.totePinsDiscount)}
         </strong>
+
       </div>
     `;
   }
@@ -530,14 +586,17 @@ function updateSummary() {
   if (c.capPromoDiscount) {
     html += `
       <div class="summary-row discount">
+
         <span>
           Buy 10 Caps Promo
-          (${c.freeCaps} free cap${c.freeCaps > 1 ? "s" : ""})
+          (${c.freeCaps}
+          free cap${c.freeCaps > 1 ? "s" : ""})
         </span>
 
         <strong>
           −${fmt(c.capPromoDiscount)}
         </strong>
+
       </div>
     `;
   }
@@ -554,8 +613,12 @@ function updateSummary() {
   html += `
     </div>
 
+
     <div class="summary-group">
-      <h3>PAYMENT</h3>
+
+      <h3>
+        PAYMENT
+      </h3>
 
       <div class="summary-row">
         <span>Payment Method</span>
@@ -564,13 +627,17 @@ function updateSummary() {
 
       <div class="summary-row">
         <span>Reference Number</span>
-        <strong>${value("paymentReference") || "—"}</strong>
+        <strong>
+          ${value("paymentReference") || "—"}
+        </strong>
       </div>
+
     </div>
   `;
 
   if (orderSummary) {
-    orderSummary.innerHTML = html;
+    orderSummary.innerHTML =
+      html;
   }
 
   if (summaryTotal) {
@@ -586,26 +653,36 @@ function updateSummary() {
 document
   .querySelectorAll(".qty-btn")
   .forEach(btn => {
-    btn.addEventListener("click", () => {
-      const input =
-        $(btn.dataset.target);
 
-      const current =
-        intVal(input);
+    btn.addEventListener(
+      "click",
+      () => {
 
-      input.value =
-        btn.dataset.action === "plus"
-          ? current + 1
-          : Math.max(
-              0,
-              current - 1
-            );
+        const input =
+          $(btn.dataset.target);
 
-      updateSummary();
-    });
+        const current =
+          intVal(input);
+
+        input.value =
+          btn.dataset.action === "plus"
+            ? current + 1
+            : Math.max(
+                0,
+                current - 1
+              );
+
+        updateSummary();
+      }
+    );
+
   });
 
-[toteQty, pinsQty, capsQty].forEach(
+[
+  toteQty,
+  pinsQty,
+  capsQty
+].forEach(
   el =>
     el?.addEventListener(
       "input",
@@ -622,10 +699,12 @@ document
     'input[name="deliveryMethod"]'
   )
   .forEach(el => {
+
     el.addEventListener(
       "change",
       updateSummary
     );
+
   });
 
 document
@@ -633,13 +712,17 @@ document
     'input[name="paymentMethod"]'
   )
   .forEach(el => {
+
     el.addEventListener(
       "change",
       () => {
+
         updatePaymentUI();
         updateSummary();
+
       }
     );
+
   });
 
 form
@@ -647,10 +730,12 @@ form
     'input:not([type="radio"]):not([type="file"])'
   )
   .forEach(el => {
+
     el.addEventListener(
       "input",
       updateSummary
     );
+
   });
 
 region?.addEventListener(
@@ -683,6 +768,7 @@ function validate() {
   form
     .querySelectorAll("[required]")
     .forEach(el => {
+
       let ok;
 
       if (el.type === "radio") {
@@ -708,6 +794,7 @@ function validate() {
       if (!ok) {
         valid = false;
       }
+
     });
 
   const mobileDigits =
@@ -722,6 +809,7 @@ function validate() {
       mobileDigits
     )
   ) {
+
     $("mobile")?.classList.add(
       "invalid"
     );
@@ -735,8 +823,9 @@ function validate() {
       intVal(capsQty) ===
     0
   ) {
+
     alert(
-      "Please select at least one MAARTE product."
+      "Please select at least one demo product."
     );
 
     valid = false;
@@ -746,7 +835,7 @@ function validate() {
 }
 
 /* =========================================================
-   GOOGLE SHEETS SUBMISSION DATA
+   DEMO TRACKER SUBMISSION DATA
 ========================================================= */
 
 function buildSubmission() {
@@ -805,15 +894,18 @@ function buildSubmission() {
     paymentReference:
       value(
         "paymentReference"
-      )
+      ),
+
+    source:
+      "Portfolio Demo"
   };
 }
 
 /* =========================================================
-   INSTAGRAM ORDER SUMMARY
+   DEMO ORDER SUMMARY MESSAGE
 ========================================================= */
 
-function buildInstagramOrderSummary() {
+function buildDemoOrderSummary() {
   const c =
     calculateOrder();
 
@@ -824,16 +916,17 @@ function buildInstagramOrderSummary() {
     .filter(Boolean)
     .join(" ");
 
-  const instagram =
-    value("instagram");
-
   const paymentMethod =
     selected("paymentMethod");
 
   const lines = [];
 
   lines.push(
-    "MAARTE PRE-ORDER 💗"
+    "VELORA DEMO PRE-ORDER"
+  );
+
+  lines.push(
+    "Portfolio Workflow Demonstration"
   );
 
   lines.push("");
@@ -847,7 +940,7 @@ function buildInstagramOrderSummary() {
   );
 
   lines.push(
-    `Instagram: ${instagram}`
+    `Instagram: ${value("instagram")}`
   );
 
   lines.push(
@@ -866,19 +959,19 @@ function buildInstagramOrderSummary() {
 
   if (c.tote) {
     lines.push(
-      `MAARTE Tote Bag × ${c.tote} — ${fmt(c.toteSubtotal)}`
+      `Everyday Tote × ${c.tote} — ${fmt(c.toteSubtotal)}`
     );
   }
 
   if (c.pins) {
     lines.push(
-      `MAARTE Pins × ${c.pins} — ${fmt(c.pinsSubtotal)}`
+      `Pin Set × ${c.pins} — ${fmt(c.pinsSubtotal)}`
     );
   }
 
   if (c.caps) {
     lines.push(
-      `MAARTE Cap × ${c.caps} — ${fmt(c.capSubtotal)}`
+      `Classic Cap × ${c.caps} — ${fmt(c.capSubtotal)}`
     );
   }
 
@@ -890,13 +983,17 @@ function buildInstagramOrderSummary() {
 
   if (c.totePinsDiscount) {
     lines.push(
-      `Tote + Pins Promo: -${fmt(c.totePinsDiscount)}`
+      `Tote + Pin Set Promo: -${fmt(
+        c.totePinsDiscount
+      )}`
     );
   }
 
   if (c.capPromoDiscount) {
     lines.push(
-      `Buy 10 Caps Promo: -${fmt(c.capPromoDiscount)}`
+      `Buy 10 Caps Promo: -${fmt(
+        c.capPromoDiscount
+      )}`
     );
   }
 
@@ -933,29 +1030,33 @@ function buildInstagramOrderSummary() {
   );
 
   lines.push(
-    `Reference No.: ${value("paymentReference")}`
+    `Demo Reference: ${value(
+      "paymentReference"
+    )}`
   );
 
   lines.push("");
 
   lines.push(
-    "MAARTE PRE-ORDER SUBMITTED 💗"
+    "DEMO WORKFLOW COMPLETED"
   );
 
   return lines.join("\n");
 }
 
 /* =========================================================
-   COPY TO CLIPBOARD
+   COPY ORDER SUMMARY
 ========================================================= */
 
 async function copyOrderSummary() {
+
   if (!finalOrderMessage) {
     finalOrderMessage =
-      buildInstagramOrderSummary();
+      buildDemoOrderSummary();
   }
 
   try {
+
     await navigator.clipboard.writeText(
       finalOrderMessage
     );
@@ -964,6 +1065,7 @@ async function copyOrderSummary() {
       $("copyOrderBtn");
 
     if (copyButton) {
+
       const original =
         copyButton.textContent;
 
@@ -971,9 +1073,12 @@ async function copyOrderSummary() {
         "COPIED ✓";
 
       setTimeout(() => {
+
         copyButton.textContent =
           original;
+
       }, 2000);
+
     }
 
     const copyStatus =
@@ -981,10 +1086,11 @@ async function copyOrderSummary() {
 
     if (copyStatus) {
       copyStatus.textContent =
-        "Order summary copied! Now open Instagram and paste it in the MAARTE DM.";
+        "Demo order summary copied to your clipboard.";
     }
+
   } catch (error) {
-    // Fallback for browsers that block Clipboard API
+
     const textarea =
       document.createElement(
         "textarea"
@@ -1016,48 +1122,121 @@ async function copyOrderSummary() {
 
     if (copyStatus) {
       copyStatus.textContent =
-        "Order summary copied! Now open Instagram and paste it in the MAARTE DM.";
+        "Demo order summary copied to your clipboard.";
     }
+
   }
 }
 
 /* =========================================================
-   SUCCESS / INSTAGRAM SECTION
+   RESET DEMO
 ========================================================= */
 
-function showInstagramSuccess() {
+function resetDemo() {
+
+  form.reset();
+
+  toteQty.value = 0;
+  pinsQty.value = 0;
+  capsQty.value = 0;
+
+  finalOrderMessage = "";
+
+  submitBtn.disabled = false;
+
+  submitBtn.textContent =
+    "SUBMIT DEMO ORDER";
+
+  formStatus.textContent = "";
+
+  instagramSuccess.classList.add(
+    "hidden"
+  );
+
+  updatePaymentUI();
+  updateSummary();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+/* =========================================================
+   SUCCESS SECTION
+========================================================= */
+
+function showDemoSuccess() {
+
   if (!instagramSuccess) {
     return;
   }
 
   finalOrderMessage =
-    buildInstagramOrderSummary();
+    buildDemoOrderSummary();
 
   instagramSuccess.innerHTML = `
+
     <div class="instagram-success-inner">
 
+      <div class="success-badge">
+        DEMO WORKFLOW COMPLETE
+      </div>
+
       <h2>
-        Pre-Order Submitted! 💗
+        Order Processed Successfully ✓
       </h2>
 
       <p>
-        Your MAARTE pre-order has been saved successfully.
+        Your test submission has been recorded in the
+        demonstration order tracker.
       </p>
 
       <p>
-        <strong>
-          One last step:
-        </strong>
-        Send your order summary to MAARTE on Instagram so our team can review your order and payment.
+        This shows how a customer-facing order form can
+        feed structured order information into a
+        behind-the-scenes administrative workflow.
       </p>
 
+
+      <div class="workflow-result">
+
+        <div class="workflow-result-item">
+          <strong>01</strong>
+          <span>Customer Form</span>
+        </div>
+
+        <div class="workflow-arrow">
+          →
+        </div>
+
+        <div class="workflow-result-item">
+          <strong>02</strong>
+          <span>Order Calculation</span>
+        </div>
+
+        <div class="workflow-arrow">
+          →
+        </div>
+
+        <div class="workflow-result-item">
+          <strong>03</strong>
+          <span>Demo Tracker</span>
+        </div>
+
+      </div>
+
+
       <div class="instagram-order-preview">
+
         <h3>
-          YOUR ORDER MESSAGE
+          GENERATED ORDER SUMMARY
         </h3>
 
         <pre id="instagramOrderText"></pre>
+
       </div>
+
 
       <button
         type="button"
@@ -1067,21 +1246,21 @@ function showInstagramSuccess() {
         COPY ORDER SUMMARY
       </button>
 
-      <a
-        href="${INSTAGRAM_DM_URL}"
-        target="_blank"
-        rel="noopener noreferrer"
-        id="openInstagramBtn"
-        class="instagram-action-btn instagram-dm-btn"
+
+      <button
+        type="button"
+        id="resetDemoBtn"
+        class="secondary-demo-btn"
       >
-        OPEN INSTAGRAM DM
-      </a>
+        START NEW DEMO
+      </button>
+
 
       <p
         id="copyOrderStatus"
         class="instagram-copy-status"
       >
-        Copy your order summary first, then open Instagram and paste it into the MAARTE DM.
+        Portfolio demo only — no real payment is processed.
       </p>
 
     </div>
@@ -1095,13 +1274,17 @@ function showInstagramSuccess() {
       finalOrderMessage;
   }
 
-  const copyBtn =
-    $("copyOrderBtn");
+  $("copyOrderBtn")
+    ?.addEventListener(
+      "click",
+      copyOrderSummary
+    );
 
-  copyBtn?.addEventListener(
-    "click",
-    copyOrderSummary
-  );
+  $("resetDemoBtn")
+    ?.addEventListener(
+      "click",
+      resetDemo
+    );
 
   instagramSuccess.classList.remove(
     "hidden"
@@ -1120,13 +1303,15 @@ function showInstagramSuccess() {
 form?.addEventListener(
   "submit",
   async e => {
+
     e.preventDefault();
 
     updateSummary();
 
     if (!validate()) {
+
       formStatus.textContent =
-        "Please complete all required fields and payment details.";
+        "Please complete all required demo fields.";
 
       return;
     }
@@ -1135,12 +1320,13 @@ form?.addEventListener(
       true;
 
     submitBtn.textContent =
-      "SUBMITTING...";
+      "PROCESSING DEMO...";
 
     formStatus.textContent =
       "";
 
     try {
+
       const submission =
         buildSubmission();
 
@@ -1164,29 +1350,30 @@ form?.addEventListener(
       );
 
       formStatus.textContent =
-        "Thank you! Your MAARTE pre-order has been submitted successfully.";
+        "Demo submission successfully recorded in the portfolio tracker.";
 
       submitBtn.textContent =
-        "SUBMITTED ✓";
+        "DEMO COMPLETED ✓";
 
       finalOrderMessage =
-        buildInstagramOrderSummary();
+        buildDemoOrderSummary();
 
-      showInstagramSuccess();
+      showDemoSuccess();
+
     } catch (error) {
-      console.error(
-        error
-      );
+
+      console.error(error);
 
       formStatus.textContent =
-        "We couldn't submit your order. Please try again.";
+        "The demo could not be completed. Please try again.";
 
       submitBtn.disabled =
         false;
 
       submitBtn.textContent =
-        "SUBMIT PRE-ORDER";
+        "SUBMIT DEMO ORDER";
     }
+
   }
 );
 
